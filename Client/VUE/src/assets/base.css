@@ -1,0 +1,24 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* border: red 1px dashed; */
+}
+
+:root{
+    --header-Container-Height: 4em;
+    --breadcrumb-Container-Height: 1em;
+    --header-margin-bottom: 1em;
+    --Header-Out-Container-Height: calc(var( --header-Container-Height)+var(--breadcrumb-Container-Height));
+    --Header-sticky-top: calc(var(--Header-Out-Container-Height) + var(--header-margin-bottom))
+}
+html,body{
+    background: var(--el-bg-color-page);
+    height: 100%;
+    width: 100%;
+}
+#App{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;  
+}
