@@ -21,14 +21,12 @@
 </template>
 
 <script setup lang="ts">
-import Breadcrumb from "@/components/thebreadcrumb.vue"
+import Breadcrumb from "./thebreadcrumb.vue"
 
 const props = defineProps([
-    "SiteTitle",
-    "PageTitle",
+    "SiteTitle",//站点标题
+    "PageTitle",//站点副标题
 ])
-
-
 </script>
 
 <style scoped>

@@ -8,8 +8,8 @@
 </template>
 <script setup lang="ts">
 // 组件导入
-import theHeader from "@/components/parts/theheader.vue";
-import theFooter from '@/components/parts/thefooter.vue';
+import theHeader from "@/components/theheader.vue";
+import theFooter from '@/components/thefooter.vue';
 
 import { RouterLink, RouterView } from 'vue-router'
 import { onBeforeMount, onMounted, ref } from 'vue';

@@ -7,21 +7,15 @@
 </template>
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
-
 import { useDark } from '@vueuse/core'
 // md编辑器2
 import Vditor from 'vditor'
 import 'vditor/dist/index.css';
 
-const value = ref('### 三级标题')
-watch(value, (newValue, oldValue) => {
-    console.log(newValue, oldValue);
-})
 let isDark = useDark();
-const vditor = ref()
 
+// 监听主题变化，应用到markdown编辑器
 watch(isDark, () => {
-
     if (isDark.value) {
         vditor.value.setTheme("dark");
     } else {
@@ -29,11 +23,25 @@ watch(isDark, () => {
     }
 })
 
+// markdown编辑器初始化
+const vditor = ref()
 onMounted(() => {
     vditor.value = new Vditor("vditor", {
+        theme: isDark.value === true ? "dark" : "classic",
+        lang: "zh_CN",
+        mode: "ir",
+        cache: {
+            "enable": false
+        },
         height: "100%",
         width: "80%",
         placeholder: "请输入内容",
+        preview: {
+            hljs: {
+                style: 'github',
+                lineNumber: true,
+            },
+        }
     });
 });
 
@@ -50,8 +58,5 @@ onMounted(() => {
     flex: 1;
 }
 
-.vditor-reset {
-    color: none !important;
 
-}
 </style>

@@ -1,3 +1,4 @@
+
 <template>
     <div class="isDarkBtn-Box">
         <el-button dark @click="toggleDark" :type="isDark ? 'primary' : 'info'" :icon="DarkIcon" />
@@ -12,6 +13,7 @@ const DarkIcon = ref(isDark.value ? "MoonNight" : "PartlyCloudy")
 const toggleDark = () => {
     isDark.value = !isDark.value
 }
+// 监听主题更新
 watch(isDark, () => {
     if (isDark.value) {
         DarkIcon.value = "MoonNight"
