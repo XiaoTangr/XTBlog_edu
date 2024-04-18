@@ -8,24 +8,14 @@
 :root {
     --header-Container-Height: 4em;
     --breadcrumb-Container-Height: 1em;
-    --header-margin-bottom: 1em;
+    --header-margin-bottom: 0em;
     --Header-Out-Container-Height: calc(var(--header-Container-Height)+var(--breadcrumb-Container-Height));
     --Header-sticky-top: calc(var(--Header-Out-Container-Height) + var(--header-margin-bottom))
 }
 
-html,
-body {
-    background: var(--el-bg-color);
-    height: 100%;
-    width: 100%;
+.App-main-container{
+    flex: 1;
 }
-
-#App {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
 .vditor-reset>* {
     /* color:red; */
     color: var(--el-text-color-primary) !important;

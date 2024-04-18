@@ -6,24 +6,33 @@
  */
 import { createRouter, createWebHistory } from 'vue-router'
 
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
       name: 'home',
-      component: () => import('../views/homePage.vue'),
+      component: () => import('@/views/HomePage.vue'),
     },
     {
       path: '/post',
       name: 'post',
-      component: () => import('../views/postPage.vue'),
+      component: () => import('@/views/PostPage.vue'),
     },
     {
       path: '/edit',
       name: 'edit',
-      component: () => import('../views/editPage.vue'),
+      component: () => import('@/views/EditPage.vue'),
+    },
+    {
+      path: '/Admin',
+      name: 'admin',
+      component: () => import('@/views/AdminPage.vue'),
+    },
+    {
+      path: '/Login',
+      name: 'login',
+      component: () => import('@/views/LoginPage.vue'),
     },
   ]
 })

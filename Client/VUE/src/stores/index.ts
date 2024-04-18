@@ -31,11 +31,12 @@ export const useSiteData = defineStore('SiteData', () => {
   const siteSubTitle = ref("Site Sub Title");
   const siteDescription = ref("Site Description");
   const siteFavicon = ref("/favicon.jpg");
+  const isLogin = ref(false);
   function setSiteData(data: any) {
     siteName.value = data.sitename;
     siteSubTitle.value = data.sitesubtitle;
     siteFavicon.value = data.sitefavicon;
     siteDescription.value = data.sitedescription;
   }
-  return { siteName, siteFavicon, siteSubTitle, siteDescription, setSiteData }
+  return {isLogin, siteName, siteFavicon, siteSubTitle, siteDescription, setSiteData }
 })

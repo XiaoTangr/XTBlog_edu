@@ -1,31 +1,17 @@
 <template>
     <div class="pp-Container">
-        <el-row>
-            <el-col class="pp-Container-left" :span="screendata.leftspan">
-                <div class="pp-Container-left-card">
-                    <el-card>是是是
-                    </el-card>
-                </div>
-            </el-col>
-            <el-col :span="screendata.mainspan">
-                <div class="pp-Container-main-card"
-                    :class="screendata.mainspan === 24 ? 'pp-Container-main-card-only' : ''">
-                    <el-card>
-                        <div>
-                            <MDRender :markdown="MDfile" />
-
-                        </div>
-                    </el-card>
-                </div>
-            </el-col>
-        </el-row>
+        <el-card>
+            <div>
+                <MDRender :markdown="MDfile" />
+            </div>
+        </el-card>
     </div>
+
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import MDRender from '@/components/themdrender.vue';
-
+import MDRender from "@/components/utils/MDRender.vue"
 //! 导入markdown文件，用于测试
 import MDfile from '@/assets/README.md?raw';
 
@@ -62,25 +48,8 @@ onMounted(() => {
 
 </script>
 
-<style scoped>
-.pp-Container-left-card,
-.pp-Container-main-card {
-
-    margin: var(--header-margin-bottom);
-    margin-top: 0;
-}
-
-.pp-Container-main-card-only {
-    margin: var(--header-margin-bottom) !important;
-}
-
-.pp-Container-main-card {
-    margin-left: calc(var(--header-margin-bottom) /2)
-}
-
-.pp-Container-left-card {
-    margin-right: calc(var(--header-margin-bottom) /2);
-    position: sticky;
-    top: var(--Header-sticky-top)
+<style>
+.pp-Container{
+    padding:  1em;
 }
 </style>
