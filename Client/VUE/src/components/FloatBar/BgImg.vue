@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-tooltip v-if="isShow" :placement="placement" content="随机一张背景图片">
+        <el-tooltip v-if="Show" :placement="placement" content="随机一张背景图片">
             <el-button color="#626aef" plain size='large' :icon="PictureFilled" @click="UpdateBG(API)"></el-button>
         </el-tooltip>
     </div>
@@ -14,7 +14,7 @@ import { PictureFilled } from '@element-plus/icons-vue'
 const body = document.body as HTMLBodyElement;
 
 const props = defineProps({
-    isShow: {
+    Show: {
         type: Boolean,
         default: false
     },

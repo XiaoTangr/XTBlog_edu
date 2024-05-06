@@ -1,24 +1,10 @@
 <template>
-    <div class="Edit-Continar">
-        <el-card>
-            <el-form label-width="auto">
-                <el-form-item>
-                    <div class="Edit-Submit-Continar">
-                        <el-button :icon="MessageBox" type="info">暂存</el-button>
-                        <el-button :icon="Upload" type="primary">发布</el-button>
-                    </div>
-                </el-form-item>
-                <el-form-item label="标题">
-                    <el-input placeholder="请输入标题"></el-input>
-                </el-form-item>
-                <el-form-item label="摘要">
-                    <el-input type="textarea" placeholder="请输入摘要"></el-input>
-                </el-form-item>
-                <el-form-item>
-                    <div id="vditor"></div>
-                </el-form-item>
-            </el-form>
+    <div class="EP-Container">
+
+        <el-card class="EP-Content-Container">
+            <div id="vditor"></div>
         </el-card>
+
     </div>
 </template>
 <script setup lang="ts">
@@ -68,27 +54,17 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.Edit-Continar {
+.EP-Container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    flex: 1;
-    margin: 1em;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        overflow: auto;
+        padding: 1em;
 }
 
-.Edit-Submit-Continar {
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    align-items: center;
-    width: 100%;
-}
-
-@media screen and (min-width: 768px) {
-    .Edit-Continar {
-        width: 70%;
-    }
+.EP-Content-Container {
+    overflow: auto;
 }
 </style>

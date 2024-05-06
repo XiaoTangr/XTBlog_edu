@@ -13,11 +13,28 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: () => import('@/views/HomePage.vue'),
-    },
-    {
-      path: '/post',
-      name: 'post',
-      component: () => import('@/views/PostPage.vue'),
+      children: [
+        {
+          path: '/',
+          name: 'home',
+          component: () => import('@/views/PostsListPage.vue'),
+        },
+        {
+          path: '/post',
+          name: 'post',
+          component: () => import('@/views/PostPage.vue'),
+        },
+        {
+          path: '/about',
+          name: 'about',
+          component: () => import('@/views/AboutPage.vue'),
+        },
+        {
+          path: "/Categories",
+          name: "categories",
+          component: () => import('@/views/CategoriesPage.vue'),
+        }
+      ]
     },
     {
       path: '/edit',

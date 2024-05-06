@@ -1,10 +1,8 @@
 <template>
     <div class="pp-Container">
-        <el-card>
-            <div>
-                <MDRender :markdown="MDfile" />
-            </div>
-        </el-card>
+        <div>
+            <MDRender :markdown="MDfile" />
+        </div>
     </div>
 
 </template>
@@ -49,7 +47,8 @@ onMounted(() => {
 </script>
 
 <style>
-.pp-Container{
-    padding:  1em;
+.pp-Container {
+    padding: 1em;
+    overflow: auto;
 }
 </style>

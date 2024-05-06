@@ -9,7 +9,7 @@
     License :MIT
 -->
 <template>
-    <div>
+    <div >
         <el-tooltip :placement="placement" :content="isDark ? 'Dark Mode' : 'Light Mode'">
             <el-button size='large' plain @click="toggleDark" :color="isDark ? '#181818' : '#cdcdcd'"
                 :icon="DarkIcon" />
