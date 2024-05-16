@@ -33,10 +33,12 @@
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
+import { ElMessage, type FormInstance, type FormRules, type MessageParamsWithType } from 'element-plus'
 import { useRouter } from 'vue-router'
+import axios from 'axios';
 const router = useRouter()
 const LoginFormRef = ref<FormInstance>()
+
 // 前端验证账号密码格式是否正确
 const validateUuid = (rule: any, value: any, callback: any) => {
     if (!value) {
@@ -72,14 +74,24 @@ const onSubmit = (formEl: FormInstance | undefined) => {
         return
     formEl.validate((valid) => {
         if (valid) {
-            // 这里应该调用后端接口进行验证，验证通过后跳转到首页，验证失败则显示错误信息。
-            if (LoginForm.uuid === 'admin' && LoginForm.passwd === 'admin') { // 假设的验证逻辑，实际应该调用后端接口进行验证。
-                ElMessage.success('登录成功!,即将跳转到先前页面...')
-                setTimeout(() => { // 假设的跳转逻辑，实际应该根据后端返回的登录结果进行跳转或显示错误信息。
-                    router.go(-1) // 假设登录成功后跳转到首页，实际应该根据后端返回的登录结果进行跳转或显示错误信息。
-                    formEl.resetFields() // 重置表单，清除输入框内容。
-                }, 2500)
-            }
+            const jsonData = {
+                username: LoginForm.uuid,
+                password: LoginForm.passwd,
+            };
+            axios.post('/api/login', jsonData).then((response: any) => { 
+                if (response.data.msg === 'success') { 
+                    ElMessage.success('登录成功!,即将跳转到先前页面...')
+                    setTimeout(() => { 
+                        router.go(-1) 
+                        formEl.resetFields()
+                    }, 2500)
+                } else {
+                    ElMessage.error('登录失败，请检查您的用户名或密码是否正确。')
+                    return false
+                }
+            }).catch((error: any) => {
+                ElMessage.error(error) 
+            })
         } else {
             console.log('error submit!')
             return false
@@ -89,7 +101,7 @@ const onSubmit = (formEl: FormInstance | undefined) => {
 const onCancel = (formEl: FormInstance | undefined) => {
     if (!formEl) return
     formEl.resetFields()
-    router.go(-1)//返回上一页
+    router.go(-1)
 }
 </script>
 
@@ -102,7 +114,6 @@ const onCancel = (formEl: FormInstance | undefined) => {
     height: 100%;
     width: 100%;
 }
-
 .card {
     width: 320px;
     padding: 1em;
@@ -111,12 +122,10 @@ const onCancel = (formEl: FormInstance | undefined) => {
     backdrop-filter: blur(1em);
     -webkit-backdrop-filter: blur(1em);
 }
-
 .FormBtns-Container {
     width: 100%;
 
 }
-
 .el-form-item:last-child {
     margin-bottom: 0
 }

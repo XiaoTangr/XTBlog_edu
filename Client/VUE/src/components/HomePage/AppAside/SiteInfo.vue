@@ -10,11 +10,12 @@
                     {{ data.SiteDesc }}
                 </p>
             </div>
-            <div class="SocialLinl-Container">
-                <SocialIcon link="https://www.baidu.com" icon="./favicon.jpg">
-                    <el-icon>
-                        <Link />
-                    </el-icon>
+            <div class="SocialLink-Container">
+                <SocialIcon href="https://www.baidu.com">
+                    <Link />
+                </SocialIcon>
+                <SocialIcon href="https://www.baidu.com" desc="你好">
+                    <Link />
                 </SocialIcon>
             </div>
         </el-card>
@@ -23,7 +24,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import SocialIcon from '../utils/SocialIcon.vue';
+import SocialIcon from './components/SocialIcon.vue'
+import { Link } from '@element-plus/icons-vue';
 
 
 const data = ref({
@@ -39,9 +41,21 @@ const data = ref({
     flex-direction: column;
     align-items: center;
 }
-.Avatar-Container{
+
+.Avatar-Container {
     display: flex;
     flex-direction: column;
     align-items: center
+}
+
+.SocialLink-Container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.SocialLink-Container div {
+    margin: .25em;
 }
 </style>

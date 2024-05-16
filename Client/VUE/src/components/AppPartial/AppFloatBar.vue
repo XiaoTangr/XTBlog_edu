@@ -6,8 +6,8 @@
 </template>
 
 <script setup lang="ts">
-import IsDark from "./FloatBar/IsDark.vue";
-import BgImg from "./FloatBar/BgImg.vue";
+import IsDark from "./AppFloatBar/IsDark.vue";
+import BgImg from "./AppFloatBar/BgImg.vue";
 
 </script>
 

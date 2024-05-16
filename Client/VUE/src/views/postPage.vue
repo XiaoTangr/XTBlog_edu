@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import MDRender from "@/components/utils/MDRender.vue"
+import MDRender from "@/components/PostPage/MDRender.vue"
 //! 导入markdown文件，用于测试
 import MDfile from '@/assets/README.md?raw';
 

@@ -1,7 +1,7 @@
 <template>
     <el-container>
         <el-aside class="Aside-Container" width="380px">
-            <SiteInfo />
+            <ApppAside />
         </el-aside>
         <el-main>
             <el-card class="Main-Container">
@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import SiteInfo from '@/components/Aside/SiteInfo.vue';
+import ApppAside from '@/components/HomePage/AppAside.vue';
 </script>
 
 <style scoped>
@@ -26,5 +26,4 @@ import SiteInfo from '@/components/Aside/SiteInfo.vue';
 
     overflow-y: auto;
 }
-
 </style>

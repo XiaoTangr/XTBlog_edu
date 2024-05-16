@@ -1,64 +1,36 @@
 <?php
-declare (strict_types = 1);
+
+declare(strict_types=1);
 
 namespace app\controller\api;
 
 use think\Request;
+use think\Response;
 
 class Login
 {
-    /**
-     * 显示资源列表
-     *
-     * @return \think\Response
-     */
-    public function index()
+    public function login(Request $request)
     {
-        return json(["med" => "get"]);
-    }
+        // 允许跨域访问
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE');
+        header('Access-Control-Max-Age: 3600');
+        header('Access-Control-Allow-Headers: x-requested-with, content-type');
 
-    /**
-     * 保存新建的资源
-     *
-     * @param  \think\Request  $request
-     * @return \think\Response
-     */
-    public function save(Request $request)
-    {
-        return json(["med" => "post"]);
-    }
+        // 获取请求参数
+        $username = $request->param('username');
+        $password = $request->param('password');
 
-    /**
-     * 显示指定的资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function read($id)
-    {
-        return json(["med" => "read"]);
-    }
 
-    /**
-     * 保存更新的资源
-     *
-     * @param  \think\Request  $request
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function update(Request $request, $id)
-    {
-        return json(["med" => "update"]);
-    }
+        // 模拟验证用户名和密码
+        $isValidUser = $username === 'admin' && $password === 'admin';
 
-    /**
-     * 删除指定资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function delete($id)
-    {
-        return json(["med" => "delete"]);
+        // 返回响应
+        $response = [
+            'code' => $isValidUser ? 200 : 401,
+            'msg' => $isValidUser ? 'success' : 'Invalid username or password'
+        ];
+
+        return Response::create($response, 'json');
     }
 }

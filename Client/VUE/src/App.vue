@@ -1,15 +1,14 @@
 <template>
   <div class="App-Container">
     <RouterView />
-    <FloatBar />
+    <AppFloatBar />
   </div>
 </template>
 <script setup lang="ts">
 import { onBeforeMount } from 'vue';
-
 import { useSiteData } from '@/stores/index';
-import FloatBar from './components/FloatBar.vue';
 import { RouterView } from 'vue-router';
+import AppFloatBar from './components/AppPartial/AppFloatBar.vue';
 
 const SiteData = useSiteData();
 onBeforeMount(() => {

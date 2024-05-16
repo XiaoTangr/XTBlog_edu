@@ -8,4 +8,3 @@ Route::resource('api/Articles', 'api.Articles')
             'index', 'save', 'read', 'update', 'delete'
         ]
     )->AllowCrossDomain();
-Route::post('/api/login', 'api.Login/login')->AllowCrossDomain();
